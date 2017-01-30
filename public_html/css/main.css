@@ -1,0 +1,51 @@
+body{
+    background-image: url("https://www.essenceofzen.org/assets/imgs/backgrounds/black-flora-background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.side-space{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 1005px;
+}
+
+.nav-panel{
+    background-color: #dfdfdf;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.panel{
+    background-color: #fafafa;
+    padding: 10px;
+    outline: solid #bebebe;
+    box-shadow: 0px 5px 15px grey;
+}
+
+ul.horizontal-list li{
+    display: inline;
+}
+
+.left-panel{
+    float: left;
+    margin-right: 5px;
+}
+
+.right-panel{
+    float: left;
+    margin-left: 5px;
+}
+
+.size-half{
+    width: 475px ;
+}
+
+.size-quarter{
+    width: 248px;
+}
+
+.size-3quarter{
+    width: 75%;
+}
