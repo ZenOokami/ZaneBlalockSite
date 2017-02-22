@@ -8,13 +8,17 @@ body{
 .side-space{
     margin-left: 10%;
     margin-right: 10%;
-    width: 1005px;
+    width: 1010px;
 }
 
 .nav-panel{
     background-color: #dfdfdf;
     border-radius: 25px;
     padding: 10px;
+}
+
+.nav-panel li{
+	display: inline;
 }
 
 .panel{
