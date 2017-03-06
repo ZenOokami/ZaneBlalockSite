@@ -8,25 +8,25 @@
     </head>
     <body>
         <?php
-		$title = $_POST['Title'];
+    		$title = $_POST['Title'];
         $first_name = $_POST['First_Name'];
-		$family_name = $_POST['Family_Name'];
-		$address = $_POST['Address'];
-		$date_of_birth = $_POST['Date_of_birth'];
-		
-		$year = date("Y");
-		$age = $year - $date_of_birth;
-		
-		
-		print("<p>This is for testing:</p>");
-        print "<p>You typed $first_name</p>";
-        print '<p>You typed $first_name</p>';
-        print '<p>You typed ' . $first_name . '</p>';
-		print("<hr>");
-		
-		// Real output
-		print("<p>Hello, $title $first_name $family_name of $address. </p>");
-		print("You will be $age this year!");
+    		$family_name = $_POST['Family_Name'];
+    		$address = $_POST['Address'];
+    		$date_of_birth = $_POST['Date_of_birth'];
+
+    		$year = date("Y");
+    		$age = $year - $date_of_birth;
+
+
+    		print("<p>This is for testing:</p>");
+            print "<p>You typed $first_name</p>";
+            print '<p>You typed $first_name</p>';
+            print '<p>You typed ' . $first_name . '</p>';
+    		print("<hr>");
+
+    		// Real output
+    		print("<p>Hello, $title $first_name $family_name of $address. </p>");
+    		print("You will be $age this year!");
         ?>
     </body>
 </html>
