@@ -328,7 +328,7 @@ function loop(){
 }
 
 function step23(){
-    for(var index = 0; index < 24; index++){
+    for(var index = 0; index < 23; index++){
         setTimeout(function(){
             tick();
         }, 1000);
