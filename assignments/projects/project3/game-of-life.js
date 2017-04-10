@@ -4,6 +4,7 @@
 
 var table = document.getElementById('game_of_life_table'); // Create the table globally
 var size = 35; // allows easy resizing of grid
+//var size = document.getElementById("size").value;
 var generation = 0;
 var live_cells;
 var output_generation = document.getElementById("generation_value");
@@ -52,6 +53,11 @@ function createTable() {
     table.appendChild(tbody);
     //body.appendChild(table);
     //div.appendChild(table);
+}
+
+function delete_table(){
+    clear_board();
+    table.removeChild(table.getElementsByTagName("tbody")[0]);
 }
 
 function getInformation() {
@@ -297,6 +303,8 @@ function clear_board(){ // Resets the grid
             table.rows[row].cells[column].style.backgroundColor = "white";
         }
     }
+
+    update_population();
 }
 
 function toggle(){
@@ -321,7 +329,7 @@ function loop(){
         tick();
         setTimeout(function () {
             loop();
-        }, 500);
+        }, 200);
     }else{
 
     }
@@ -331,7 +339,7 @@ function step23(){
     for(var index = 0; index < 23; index++){
         setTimeout(function(){
             tick();
-        }, 1000);
+        }, 500);
     }
 }
 
@@ -340,5 +348,42 @@ function update_population(){
     output_population.innerHTML = live_cells.length.toString();
 }
 
+function random(){
+    // clear our table
+    clear_board();
+
+    for(var row = 0; row < size; row++){
+        for(var column = 0; column < size; column++){
+            // Check every cell, give it a 0 or 1 -- if 0, dead, if 1, live
+
+            if(getRandomInt(0,2) == 0){
+                table.rows[row].cells[column].style.backgroundColor = "white";
+                table.rows[row].cells[column].className = "die";
+            }else{
+                table.rows[row].cells[column].style.backgroundColor = "red";
+                table.rows[row].cells[column].className = "live";
+            }
+        }
+    }
+
+    update_population();
+}
+
+function get_table_size(){
+    size = parseInt(document.getElementById("size").value);
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function new_table(){
+    delete_table();
+    get_table_size();
+
+    createTable();
+}
 
 createTable();
