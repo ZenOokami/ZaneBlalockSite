@@ -321,7 +321,7 @@ function loop(){
         tick();
         setTimeout(function () {
             loop();
-        }, 1000);
+        }, 500);
     }else{
 
     }
