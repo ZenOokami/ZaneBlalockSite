@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zane Blalock's Game of Life</title>
+</head>
+<body>
+
+<h1>Zane Blalock's Game of Life</h1>
+<h4><i>This was designed using JavaScript and Tables - as requested by the professor.</i></h4>
+<p>
+    <b>How it works:</b> The system uses Classes(live/die) and the properties of background colors.
+</p>
+<p><b>How tO Use:</b> Simply click on a cell to create a living cell, click step or run to see the process.</p>
+
+<hr/>
+
+<div>
+    <table id="game_of_life_table">
+
+    </table>
+
+    <hr>
+
+    <input type="button" value="Step" onclick="tick()">
+    <input type="button" id="toggle_button" value="Run" onclick="toggle()">
+    <input type="button" value="Clear" onclick="clear_board()">
+
+    <b>Generations: </b><span id="generation_value">0</span> &nbsp;
+    <b>Population: </b><span id="population_value">0</span>
+</div>
+
+
+<!--<script>-->
+    <!--var table = document.getElementById('game_of_life_table');-->
+    <!--var size = 35;-->
+
+    <!--function createTable() {-->
+        <!--var min = 0;-->
+
+        <!--//var body = document.getElementsByTagName("body")[0];-->
+        <!--//var div = document.getElementById("game_of_life_table");-->
+        <!--//var table = document.createElement("table");-->
+<!--//        var table = document.getElementById('game_of_life_table');-->
+        <!--var tbody = document.createElement("tbody");-->
+
+        <!--table.style.width = '100%';-->
+        <!--table.setAttribute('border', '1');-->
+
+        <!--for (var index = 0; index < size; index++) {-->
+            <!--var tr = document.createElement('tr');-->
+            <!--for (var index2 = 0; index2 < size; index2++) {-->
+                <!--if (index == size - 1 && index2 == size) {-->
+                    <!--break;-->
+                <!--} else {-->
+                    <!--var td = document.createElement('td');-->
+                    <!--td.appendChild(document.createTextNode(''));-->
+                    <!--td.style.padding = '10px';-->
+                    <!--td.style.backgroundColor = 'white';-->
+                    <!--td.onclick = function () {-->
+                        <!--if (this.style.backgroundColor == 'white') {-->
+                            <!--this.style.backgroundColor = 'red';-->
+                        <!--} else {-->
+                            <!--this.style.backgroundColor = 'white';-->
+                        <!--}-->
+                    <!--};-->
+                    <!--index == size && index2 == size ? td.setAttribute('rowSpan', (size + 1).toString()) : null;-->
+                    <!--tr.appendChild(td)-->
+                <!--}-->
+            <!--}-->
+            <!--tbody.appendChild(tr);-->
+        <!--}-->
+        <!--table.appendChild(tbody);-->
+        <!--//body.appendChild(table);-->
+        <!--//div.appendChild(table);-->
+    <!--}-->
+
+    <!--function tick() {-->
+        <!--console.log("hey");-->
+        <!--var live_cells;-->
+<!--//        var current_cell;-->
+        <!--// We need to grab every cell, and check around it &#45;&#45; Top Left = row-1, column-1-->
+        <!--for (var row = 0; row < size; row++) { //For every Row-->
+            <!--// Rows then columns-->
+            <!--for (var column = 0; column < size; column++) { //For every Column-->
+
+                <!--live_cells = 0;-->
+
+                <!--// Check the row-->
+                <!--if (row == 0) { // Don't check upwards-->
+
+                    <!--// Check the column-->
+                    <!--if (column == 0) { // don't check left-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column + 1].style.backgroundColor == 'red') { // bottom right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+                    <!--} else if (column == size - 1) { // Don't check right-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column - 1].style.backgroundColor == 'red') { // bottom left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                    <!--} else { // check all-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column + 1].style.backgroundColor == 'red') { // bottom right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column - 1].style.backgroundColor == 'red') { // bottom left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                    <!--}-->
+
+                <!--} else if (row == size - 1) { // Don't check downwards-->
+
+                    <!--// Check the column-->
+                    <!--if (column == 0) { // don't check left-->
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column + 1].style.backgroundColor == 'red') { // top right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+                    <!--} else if (column == size - 1) { // Don't check right-->
+
+                        <!--if (table.rows[row - 1].cells[column - 1].style.backgroundColor == 'red') { // top left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+                    <!--} else { // check all-->
+
+                        <!--if (table.rows[row - 1].cells[column - 1].style.backgroundColor == 'red') { // top left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column + 1].style.backgroundColor == 'red') { // top right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                    <!--}-->
+
+                <!--} else { // Check all-->
+
+                    <!--// Check columns-->
+                    <!--if (column == 0) { // Don't check left-->
+
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column + 1].style.backgroundColor == 'red') { // top right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column + 1].style.backgroundColor == 'red') { // bottom right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+                    <!--} else if (column == size - 1) { // don't check right-->
+
+                        <!--if (table.rows[row - 1].cells[column - 1].style.backgroundColor == 'red') { // top left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column - 1].style.backgroundColor == 'red') { // bottom left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+
+                    <!--} else { // check all-->
+
+                        <!--if (table.rows[row - 1].cells[column - 1].style.backgroundColor == 'red') { // top left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column].style.backgroundColor == 'red') { // top-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row - 1].cells[column + 1].style.backgroundColor == 'red') { // top right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column + 1].style.backgroundColor == 'red') { // right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column + 1].style.backgroundColor == 'red') { // bottom right-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column].style.backgroundColor == 'red') { // bottom-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row + 1].cells[column - 1].style.backgroundColor == 'red') { // bottom left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+                        <!--if (table.rows[row].cells[column - 1].style.backgroundColor == 'red') { // left-->
+                            <!--live_cells += 1;-->
+                        <!--}-->
+
+                    <!--}-->
+                <!--}-->
+
+                <!--//Finished checking current cell-->
+                <!--//Check current cell-->
+                <!--if (table.rows[row].cells[column].style.backgroundColor == 'white') { // if current cell is dead cell-->
+                    <!--// chcek to see if live_cells == 3-->
+                    <!--if (live_cells == 3) {-->
+                        <!--// revive cell-->
+                        <!--table.rows[row].cells[column].style.backgroundColor = 'red';-->
+                    <!--}-->
+                <!--} else {-->
+                    <!--// if current cell is alive-->
+                    <!--// Check to see if live_cells < 2 or > 3-->
+                    <!--if (live_cells < 2 || live_cells > 3) { // then kill the cell-->
+                        <!--table.rows[row].cells[column].style.backgroundColor = 'white';-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+
+    <!--function getInformation() {-->
+        <!--console.log(table);-->
+    <!--}-->
+
+
+
+    <!--createTable();-->
+<!--</script>-->
+
+
+
+</body>
+<footer>
+    <script src="game-of-life.js">
+    </script>
+</footer>
+</html>

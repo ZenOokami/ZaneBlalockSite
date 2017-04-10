@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style></style>
+</head>
+<body>
+
+<div>
+
+    <form id="payment">
+        <input type="radio" id="credit_card" value="credit_card" name="pay"/><label for="credit_card">Credit Card</label>
+        <input type="radio" id="wire_transfer" value="wire_transfer" name="pay"/><label for="wire_transfer">Wire Transfer</label>
+        <input type="button" value="Buy" name="pay"/>
+
+        <br><br>
+        
+    </form>
+
+
+    <div id="credit_card_body" style="display: none;">
+        <b>Card Number: </b><input type="number"/>&nbsp;
+        <b>Expiration: </b><input type="number" maxlength="2" size="2" width="3"/>&nbsp;/&nbsp;<input type="number" width="3" maxlength="2"/>&nbsp;
+        <b>Security Number: </b><input type="number"/>
+    </div>
+
+    <div id="wire_transfer_body" style="display: none;">
+        <p>Transfer the amount to: reg. $957.00, to account 0009286322</p>
+    </div>
+</div>
+
+<hr>
+
+<div id="container">
+    <!--<ul id="dragndrop">-->
+        <!--<li id="drag1">Fizz</li>-->
+        <!--<li id="drag2">Buzz</li>-->
+        <!--<li id="drag3">Pop</li>-->
+        <!--<li id="drag4">Bloop</li>-->
+    <!--</ul>-->
+    <p id="drag1">Fizz</p>
+    <p id="drag2">Buzz</p>
+    <p id="drag3">Pop</p>
+    <p id="drag4">Bloop</p>
+
+    <div>
+        <img id="drop_image" src="Trash-can-icon.png"/>
+    </div>
+</div>
+
+<div id="content" style="width: 800px;">
+
+
+    <div id="draggable-1" >1</div>
+
+    <div id="draggable-2" >2</div>
+    <div id="draggable-3" >3</div>
+
+    <div id="droppable-1" ><p>TRASH 1</p></div>
+    <div id="droppable-2" ><p>TRASH 2</p></div>
+    <div id="droppable-3" ><p>TRASH 3</p></div>
+    <p>I could not figure out how to get multiple accepts -- drag "1" into "TRASH 1"</p>
+
+
+</div>
+
+
+<script>
+    console.log("I am working");
+    $('#payment').change(function(){
+        if($('#credit_card').is(":checked")){
+            //console.log("I made it this far");
+            $("#credit_card_body").show();
+
+        }else{
+            $("#credit_card_body").hide();
+        }
+
+        if($("#wire_transfer").is(":checked")){
+            $("#wire_transfer_body").show();
+        }else{
+            $("#wire_transfer_body").hide();
+        }
+    });
+
+//    $(function () {
+//        $("#dragndrop").sortable();
+//
+//    });
+
+    $("#drag1,#drag2,#drag3,#drag4").draggable({
+        revert: "invalid", containment: "#container"
+    });
+
+    $("#drop_image").droppable({
+        accept: ["#drag1","drag2","drag3"],
+        drop: function (event, ui) {
+            alert("are you sure?");
+        }
+    });
+
+    $()
+
+    $("#draggable-1, #draggable-2, #draggable-3").draggable({ revert: "invalid", containment: "#content"});
+
+    $("#droppable-1").droppable({
+        accept: "#draggable-1",
+        drop: function(event, ui) {
+            alert("are you sure?");
+        }
+    });
+
+    $("#droppable-2").droppable({
+        accept: "#draggable-blue",
+        drop: function(event, ui) {
+            alert("are you sure?");
+        }
+    });
+
+    $("#droppable-3").droppable({
+        accept: "#draggable-green",
+        drop: function(event, ui) {
+            alert("are you sure?");
+        }
+    });
+</script>
+</body>
+</html>

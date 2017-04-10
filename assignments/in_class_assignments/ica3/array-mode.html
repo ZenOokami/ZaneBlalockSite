@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <script>
+        var array1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+
+        var modes = {};
+        var appearance = 0;
+        // check every element - add them to modes and increment their appearances accordingly:
+
+        for(item in array1){
+            modes[array1[item]] = (modes[array1[item]] || 0) + 1; // this should increment the appearance
+
+            if(modes[array1[item]] > appearance){
+                appearance = modes[array1[item]];
+                var mode = array1[item];
+            }
+        }
+
+        document.writeln(array1 + "<br>");
+
+        //document.write("Modes: " + modes + "<br>");
+
+        document.write("The most reoccurring item is: " + mode);
+
+    </script>
+</div>
+
+</body>
+</html>

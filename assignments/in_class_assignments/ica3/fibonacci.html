@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="fib">
+
+    <script type="text/javascript">
+        var target = 10;
+        var prev;
+
+        //0 1 1 2 3 5 8 13 21 34
+
+//        for(index = 0; index < target, index++){
+//            if(index==0){
+//                document.write(index);
+//                prev = index;
+//            }else if(index == 1){
+//                document.write(index);
+//                prev = index;
+//            }
+//        }
+
+        function fibonacci(number){
+            if(number <= 1){
+                return 1;
+            }
+
+
+            return fibonacci(number -1 ) + fibonacci(number - 2);
+        }
+
+        for(index = 0; index < target; index++){
+            document.write(fibonacci(index) + " ");
+        }
+
+
+    </script>
+
+</div>
+
+</body>
+</html>
