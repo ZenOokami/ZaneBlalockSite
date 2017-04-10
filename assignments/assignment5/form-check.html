@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 5</title>
+
+    <script src="form-check.js"></script>
+
+    <style type="text/css">
+        .needed {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Register Now</h1>
+<form id="register_form">
+
+    <p>
+        <span class="needed">*</span> <label id="id_label" for="id">ID Number:</label>
+        <input id="id" name="id" type="text">
+    </p>
+
+    <p>
+        <span class="needed">*</span> <label id="first_name_label" for="first_name">First Name:</label>
+        <input id="first_name" name="first_name" type="text">
+    </p>
+
+    <p>
+        <span class="needed">*</span> <label id="last_name_label" for="last_name">Last Name:</label>
+        <input id="last_name" name="last_name" type="text">
+    </p>
+
+    <p>
+        <input type="button" onclick="checkComplete()" value="Register">
+        <input type="reset" value="Reset">
+    </p>
+
+</form>
+
+<div id="results">
+    <p>
+        <span id="id_result"></span> <br>
+        <span id="first_name_result"></span> <br>
+        <span id="last_name_result"></span> <br>
+    </p>
+</div>
+
+</body>
+
+</html>
