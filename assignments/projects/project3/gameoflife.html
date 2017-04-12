@@ -15,6 +15,19 @@
 
 <hr/>
 
+<input type="button" value="Step" onclick="tick()">
+<input type="button" value="23 Generations" onclick="step23()">
+<input type="button" value="Random" onclick="random()">
+<input type="button" id="toggle_button" value="Run" onclick="toggle()">
+<input type="button" value="Clear" onclick="clear_board()">
+<input type="text" value="35" id="size">
+<input type="button" value="Generate Table" onclick="new_table()">
+
+<b>Generations: </b><span id="generation_value">0</span> &nbsp;
+<b>Population: </b><span id="population_value">0</span>
+
+<hr/>
+
 <div>
     <table id="game_of_life_table">
 
@@ -22,16 +35,16 @@
 
     <hr>
 
-    <input type="button" value="Step" onclick="tick()">
-    <input type="button" value="23 Generations" onclick="step23()">
-    <input type="button" value="Random" onclick="random()">
-    <input type="button" id="toggle_button" value="Run" onclick="toggle()">
-    <input type="button" value="Clear" onclick="clear_board()">
-    <input type="text" value="35" id="size">
-    <input type="button" value="Generate Table" onclick="new_table()">
+    <!--<input type="button" value="Step" onclick="tick()">-->
+    <!--<input type="button" value="23 Generations" onclick="step23()">-->
+    <!--<input type="button" value="Random" onclick="random()">-->
+    <!--<input type="button" id="toggle_button" value="Run" onclick="toggle()">-->
+    <!--<input type="button" value="Clear" onclick="clear_board()">-->
+    <!--<input type="text" value="35" id="size">-->
+    <!--<input type="button" value="Generate Table" onclick="new_table()">-->
 
-    <b>Generations: </b><span id="generation_value">0</span> &nbsp;
-    <b>Population: </b><span id="population_value">0</span>
+    <!--<b>Generations: </b><span id="generation_value">0</span> &nbsp;-->
+    <!--<b>Population: </b><span id="population_value">0</span>-->
 </div>
 
 
